@@ -134,9 +134,9 @@ struct Nfc : public V1_2::INfc, public hidl_death_recipient {
 };
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_2
 }  // namespace nfc
 }  // namespace hardware
 }  // namespace android
 
-#endif  // ANDROID_HARDWARE_NFC_V1_1_NFC_H
+#endif  // ANDROID_HARDWARE_NFC_V1_2_NFC_H

@@ -101,7 +101,7 @@ Return<uint32_t> Nfc::write(const hidl_vec<uint8_t>& data) {
 
 Return<V1_0::NfcStatus> Nfc::coreInitialized(const hidl_vec<uint8_t>& data) {
   hidl_vec<uint8_t> copy = data;
-  NFCSTATUS status = phNxpNciHal_core_initialized(&copy[0]);
+  NFCSTATUS status = phNxpNciHal_core_initialized(copy.size(), &copy[0]);
   return CHK_STATUS(status);
 }
 
@@ -166,6 +166,7 @@ Return<void> Nfc::getConfig(getConfig_cb hidl_cb) {
   hidl_cb(nfcVendorConfig);
   return Void();
 }
+
 Return<void> Nfc::getConfig_1_2(getConfig_1_2_cb hidl_cb) {
   NfcConfig nfcVendorConfig;
   phNxpNciHal_getVendorConfig_1_2(nfcVendorConfig);
@@ -174,7 +175,7 @@ Return<void> Nfc::getConfig_1_2(getConfig_1_2_cb hidl_cb) {
 }
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_2
 }  // namespace nfc
 }  // namespace hardware
 }  // namespace android

@@ -94,9 +94,9 @@ Return<bool> NqNfc::resetEse(uint64_t resetType) {
     if(NFCSTATUS_SUCCESS == status) {
         ret = true;
         status = NFCSTATUS_SUCCESS;
-        ALOGD("HAL_NFC_ESE_HARD_RESET completed");
+        ALOGD("Reset request (%02x) completed", (uint8_t)resetType);
     } else {
-        ALOGD("HAL_NFC_ESE_HARD_RESET failed");
+        ALOGE("Reset request (%02x) failed", (uint8_t)resetType);
     }
     ALOGD("NqNfc::resetEse Exit");
     return ret;
