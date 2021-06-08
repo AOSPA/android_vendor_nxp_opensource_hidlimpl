@@ -33,6 +33,10 @@
 #include "Nfc.h"
 #include "NqNfc.h"
 
+#if(NXP_NFC_RECOVERY == TRUE)
+#include "phNxpNciHal_Recovery.h"
+#endif
+
 using android::hardware::nfc::V1_2::INfc;
 using android::hardware::nfc::V1_2::implementation::Nfc;
 using android::hardware::configureRpcThreadpool;
@@ -48,6 +52,10 @@ int main() {
     status_t status;
 
     sp<INfc> nfc_service = new Nfc();
+    #if(NXP_NFC_RECOVERY == TRUE)
+      phNxpNciHal_RecoverFWTearDown();
+    #endif
+
     status = nfc_service->registerAsService();
     LOG_ALWAYS_FATAL_IF(status != OK, "Error while registering nfc AOSP service: %d", status);
 

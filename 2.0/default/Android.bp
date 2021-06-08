@@ -4,6 +4,11 @@ cc_binary {
     init_rc: ["vendor.nxp.hardware.nfc@2.0-service.rc"],
     relative_install_path: "hw",
     vendor: true,
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-DNXP_NFC_RECOVERY=TRUE"
+    ],
     srcs: [
         "service.cpp",
         "Nfc.cpp",
