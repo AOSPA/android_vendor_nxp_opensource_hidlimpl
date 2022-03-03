@@ -32,7 +32,7 @@
  */
 
 /*
- *  Copyright 2018-2020 NXP
+ *  Copyright 2018-2021 NXP
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -52,6 +52,8 @@
 #include "NqNfc.h"
 #include "phNxpNciHal.h"
 #include "phNxpNciHal_Adaptation.h"
+
+extern bool nfc_debug_enabled;
 
 namespace vendor {
 namespace nxp {
@@ -133,7 +135,9 @@ Return<bool> NqNfc::isJcopUpdateRequired() {
     bool status = 0;
 
     ALOGD("NqNfc::isJcopUpdateRequired Entry");
+#ifdef NXP_BOOTTIME_UPDATE
     status = getJcopUpdateRequired();
+#endif
     ALOGD("NqNfc::isJcopUpdateRequired Exit");
     return status;
 }
@@ -142,7 +146,9 @@ Return<bool> NqNfc::isLsUpdateRequired() {
     bool status = 0;
 
     ALOGD("NqNfc::isLsUpdateRequired Entry");
+#ifdef NXP_BOOTTIME_UPDATE
     status = getLsUpdateRequired();
+#endif
     ALOGD("NqNfc::isLsUpdateRequired Exit");
     return status;
 }

@@ -7,7 +7,11 @@ cc_binary {
     cflags: [
         "-Wall",
         "-Werror",
-        "-DNXP_NFC_RECOVERY=TRUE"
+        "-Wextra",
+        "-fexceptions",
+        "-DNXP_EXTNS=TRUE",
+        "-DNXP_NFC_RECOVERY=TRUE",
+        "-DNXP_BOOTTIME_UPDATE",
     ],
     srcs: [
         "service.cpp",
